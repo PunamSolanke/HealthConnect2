@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "836324180764",
+    "project_id": "healthhub1-f2513",
+    "storage_bucket": "healthhub1-f2513.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836324180764:android:09593029578e65f3bbb0d9",
+        "android_client_info": {
+          "package_name": "com.example.healthhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzamnNJx5-TajiM8_D4LGcS33uo6Q_y9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
