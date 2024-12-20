@@ -16,7 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Register extends AppCompatActivity {
+public class PharmacyRegister extends AppCompatActivity {
 
 
     EditText fullname , pharmacyname ,username,password,email,address,contact;
@@ -29,7 +29,7 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.pharmacy_activity_register);
 
         fullname = findViewById(R.id.fullname);
         pharmacyname = findViewById(R.id.pharmacyname);
@@ -63,7 +63,7 @@ public class Register extends AppCompatActivity {
                 if (inputFullName.isEmpty() || inputPharmacyName.isEmpty() || inputUsername.isEmpty() ||
                         inputPassword.isEmpty() || inputEmail.isEmpty() || inputAddress.isEmpty() ||
                         inputContact.isEmpty()) {
-                    Toast.makeText(Register.this, "Registration Failed - All fields must be filled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PharmacyRegister.this, "Registration Failed - All fields must be filled", Toast.LENGTH_SHORT).show();
                 } else {
                     // Save the data (e.g., using SharedPreferences or a database)
                     SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
@@ -77,7 +77,7 @@ public class Register extends AppCompatActivity {
                     editor.putString("Contact", inputContact);
                     editor.apply();
 
-                    Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PharmacyRegister.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -86,7 +86,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Navigate to SignUpActivity
-                Intent intent = new Intent(Register.this, PharmasistLogin.class);
+                Intent intent = new Intent(PharmacyRegister.this, PharmasistLogin.class);
                 startActivity(intent);
             }
         });

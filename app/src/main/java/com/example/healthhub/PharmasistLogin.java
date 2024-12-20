@@ -1,4 +1,4 @@
-package com.example.pharmasist3;
+package com.example.healthhub;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,16 +48,16 @@ public class PharmasistLogin extends AppCompatActivity {
             }
         });
         // Inside your MainActivity class
-        TextView signUpText = findViewById(R.id.signUpText); // ID from your XML for the "Sign Up" text
-
-        signUpText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Navigate to SignUpActivity
-                Intent intent = new Intent(PharmasistLogin.this, Register.class);
-                startActivity(intent);
-            }
-        });
+//        TextView signUpText = findViewById(R.id.signUpText); // ID from your XML for the "Sign Up" text
+//
+//        signUpText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Navigate to SignUpActivity
+//                Intent intent = new Intent(PharmasistLogin.this, Register.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 
