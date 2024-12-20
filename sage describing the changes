@@ -1,0 +1,37 @@
+[1mdiff --git a/app/src/main/java/com/example/healthhub/PharmasistLogin.java b/app/src/main/java/com/example/healthhub/PharmasistLogin.java[m
+[1mindex c8cd064..4e9da30 100644[m
+[1m--- a/app/src/main/java/com/example/healthhub/PharmasistLogin.java[m
+[1m+++ b/app/src/main/java/com/example/healthhub/PharmasistLogin.java[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-package com.example.pharmasist3;[m
+[32m+[m[32mpackage com.example.healthhub;[m
+ [m
+ import android.content.Intent;[m
+ import android.os.Bundle;[m
+[36m@@ -48,16 +48,16 @@[m [mpublic class PharmasistLogin extends AppCompatActivity {[m
+             }[m
+         });[m
+         // Inside your MainActivity class[m
+[31m-        TextView signUpText = findViewById(R.id.signUpText); // ID from your XML for the "Sign Up" text[m
+[31m-[m
+[31m-        signUpText.setOnClickListener(new View.OnClickListener() {[m
+[31m-            @Override[m
+[31m-            public void onClick(View v) {[m
+[31m-                // Navigate to SignUpActivity[m
+[31m-                Intent intent = new Intent(PharmasistLogin.this, Register.class);[m
+[31m-                startActivity(intent);[m
+[31m-            }[m
+[31m-        });[m
+[32m+[m[32m//        TextView signUpText = findViewById(R.id.signUpText); // ID from your XML for the "Sign Up" text[m
+[32m+[m[32m//[m
+[32m+[m[32m//        signUpText.setOnClickListener(new View.OnClickListener() {[m
+[32m+[m[32m//            @Override[m
+[32m+[m[32m//            public void onClick(View v) {[m
+[32m+[m[32m//                // Navigate to SignUpActivity[m
+[32m+[m[32m//                Intent intent = new Intent(PharmasistLogin.this, Register.class);[m
+[32m+[m[32m//                startActivity(intent);[m
+[32m+[m[32m//            }[m
+[32m+[m[32m//        });[m
+ [m
+     }[m
+ [m
