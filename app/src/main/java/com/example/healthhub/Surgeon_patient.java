@@ -28,14 +28,7 @@ public class Surgeon_patient extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Surgeon_patient.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static Surgeon_patient newInstance(String param1, String param2) {
         Surgeon_patient fragment = new Surgeon_patient();

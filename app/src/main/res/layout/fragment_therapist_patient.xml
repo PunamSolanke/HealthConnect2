@@ -6,6 +6,18 @@
     tools:context=".Therapist_patient">
 
     <!-- TODO: Update blank fragment layout -->
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.chip.ChipGroup>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

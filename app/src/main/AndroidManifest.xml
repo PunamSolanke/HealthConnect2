@@ -16,18 +16,30 @@
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
 
+
+
+
+
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <!-- SplashScreen -->
         <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.SplashScreen" />
-
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
