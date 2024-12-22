@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,29 +35,32 @@ public class Surgeon_patient extends Fragment {
         doctorAdapter = new DoctorAdapter(doctorList);
         recyclerView.setAdapter(doctorAdapter);
 
-        fetchDataFromFirebase("Therapist");
+        fetchDataFromFirebase("Surgeon");  // Fetch only Surgeon doctors
 
         return view;
     }
 
-    private void fetchDataFromFirebase(String speciality) {
+    private void fetchDataFromFirebase(String specialty) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Doctors");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                doctorList.clear();
+                doctorList.clear(); // Clear previous list data before adding new data
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
-                    if (doctor != null && doctor.getSpecialty().equals(speciality)) {
-                        doctorList.add(doctor);
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class); // Get doctor object from snapshot
+                    if (doctor != null && specialty.equals(doctor.getSpecialty())) {
+                        doctorList.add(doctor); // Add doctor to list if specialty matches
                     }
                 }
-                doctorAdapter.notifyDataSetChanged();
+                doctorAdapter.notifyDataSetChanged(); // Notify adapter to update the UI
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+                System.err.println("Database error: " + error.getMessage());
+            }
         });
     }
 }

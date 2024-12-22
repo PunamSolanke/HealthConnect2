@@ -22,7 +22,7 @@ public class Dermotology_patient extends Fragment {
 
     private RecyclerView recyclerView;
     private DoctorAdapter doctorAdapter;
-    private ArrayList<com.example.healthhub.Doctor> doctorList;
+    private ArrayList<Doctor> doctorList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,29 +35,31 @@ public class Dermotology_patient extends Fragment {
         doctorAdapter = new DoctorAdapter(doctorList);
         recyclerView.setAdapter(doctorAdapter);
 
-        fetchDataFromFirebase("Therapist");
+        fetchDataFromFirebase("Dermatology");  // Fetch only Dermatology doctors
 
         return view;
     }
 
-    private void fetchDataFromFirebase(String speciality) {
+    private void fetchDataFromFirebase(String specialty) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Doctors");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                doctorList.clear();
+                doctorList.clear();  // Clear previous list data before adding new data
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    com.example.healthhub.Doctor doctor = dataSnapshot.getValue(com.example.healthhub.Doctor.class);
-                    if (doctor != null && doctor.getSpecialty().equals(speciality)) {
-                        doctorList.add(doctor);
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class);  // Get doctor object from snapshot
+                    if (doctor != null && doctor.getSpecialty().equals(specialty)) {
+                        doctorList.add(doctor);  // Add doctor to list if specialty matches
                     }
                 }
-                doctorAdapter.notifyDataSetChanged();
+                doctorAdapter.notifyDataSetChanged();  // Notify adapter to update the UI
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle errors if needed
+            }
         });
     }
 }
