@@ -1,6 +1,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-plugins {
-alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.google.gms.google.services) apply false
 
+// First, place the buildscript block
+buildscript {
+    repositories {
+        google()  // Add the Google repository if not already present
+        mavenCentral()  // Add Maven Central repository if not already present
+    }
+    dependencies {
+        classpath 'com.google.gms:google-services:4.4.2' // Use the latest version
+    }
+}
+
+// Then, define the plugins block
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.google.gms.google.services) apply false
 }
