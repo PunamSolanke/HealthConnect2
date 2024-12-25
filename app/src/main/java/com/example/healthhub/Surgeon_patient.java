@@ -1,6 +1,7 @@
 package com.example.healthhub;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +27,10 @@ public class Surgeon_patient extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_therapist_patient, container, false);
 
+        View view = inflater.inflate(R.layout.fragment_surgeon_patient, container, false);  // Updated layout
+
+        // Initialize the RecyclerView and adapter
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -35,31 +38,33 @@ public class Surgeon_patient extends Fragment {
         doctorAdapter = new DoctorAdapter(doctorList);
         recyclerView.setAdapter(doctorAdapter);
 
-        fetchDataFromFirebase("Surgeon");  // Fetch only Surgeon doctors
+        // Fetch the doctors with "Surgeon" specialty
+        fetchDataFromFirebase("Surgeon");
 
         return view;
     }
 
-    private void fetchDataFromFirebase(String specialty) {
+    private void fetchDataFromFirebase(String speciality) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Doctors");
 
+        // Add value event listener to fetch data from Firebase
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                doctorList.clear(); // Clear previous list data before adding new data
+                doctorList.clear();  // Clear the list before adding new data
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor doctor = dataSnapshot.getValue(Doctor.class); // Get doctor object from snapshot
-                    if (doctor != null && specialty.equals(doctor.getSpecialty())) {
-                        doctorList.add(doctor); // Add doctor to list if specialty matches
+                    Doctor doctor = dataSnapshot.getValue(Doctor.class);  // Convert snapshot to doctor object
+                    if (doctor != null && speciality.equals(doctor.getSpecialty())) {
+                        doctorList.add(doctor);  // Add the doctor if the specialty matches
                     }
                 }
-                doctorAdapter.notifyDataSetChanged(); // Notify adapter to update the UI
+                doctorAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error
-                System.err.println("Database error: " + error.getMessage());
+
+                Log.e("FirebaseError", "Error fetching data: " + error.getMessage());
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.example.healthhub;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class Therapist_patient extends Fragment {
         return view;
     }
 
-    private void fetchDataFromFirebase(String specialty) {
+    private void fetchDataFromFirebase(String speciality) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Doctors");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -49,16 +50,18 @@ public class Therapist_patient extends Fragment {
                 doctorList.clear();  // Clear previous list data before adding new data
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Doctor doctor = dataSnapshot.getValue(Doctor.class);  // Get doctor object from snapshot
-                    if (doctor != null && doctor.getSpecialty().equals(specialty)) {
+                    if (doctor != null && doctor.getSpecialty().equals(speciality)) {
                         doctorList.add(doctor);  // Add doctor to list if specialty matches
                     }
                 }
-                doctorAdapter.notifyDataSetChanged();  // Notify adapter to update the UI
+                // Notify adapter to update the UI with formatted text
+                doctorAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle errors if needed
+                Log.e("FirebaseError", "Error fetching data: " + error.getMessage());
             }
         });
     }

@@ -26,8 +26,10 @@ public class Dermotology_patient extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_therapist_patient, container, false);
+        // Use the correct layout file for this fragment
+        View view = inflater.inflate(R.layout.fragment_dermotology_patient, container, false);  // Changed the layout
 
+        // Initialize RecyclerView and Adapter
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -35,7 +37,8 @@ public class Dermotology_patient extends Fragment {
         doctorAdapter = new DoctorAdapter(doctorList);
         recyclerView.setAdapter(doctorAdapter);
 
-        fetchDataFromFirebase("Dermatology");  // Fetch only Dermatology doctors
+        // Fetch dermatology doctors from Firebase
+        fetchDataFromFirebase("Dermatology");
 
         return view;
     }
