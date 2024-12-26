@@ -2,11 +2,7 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-<<<<<<< HEAD
-      <SelectionState runConfigName="Pharmacy_register">
-=======
-      <SelectionState runConfigName="SplashScreen">
->>>>>>> 986375fe9ae94e5fe8c81e39835dd5818b7a4d6f
+      <SelectionState runConfigName="Pharmacy_login">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

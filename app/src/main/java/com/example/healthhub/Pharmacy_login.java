@@ -1,6 +1,3 @@
-
-
-
 package com.example.healthhub;
 
 import android.content.Intent;
@@ -16,10 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 public class Pharmacy_login extends AppCompatActivity {
     EditText username;
     EditText Password;
     Button loginButton;
+    TextView signUpText; // Add this to handle the "Register Now" navigation
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +26,19 @@ public class Pharmacy_login extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_pharmacy_login);
 
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Correctly initialize the views
+        // Initialize the views
         username = findViewById(R.id.username);
         Password = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
+        signUpText = findViewById(R.id.signUpText); // Initialize the TextView
 
+        // Handle login logic
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,17 +49,14 @@ public class Pharmacy_login extends AppCompatActivity {
                 }
             }
         });
-        // Inside your MainActivity class
-//        TextView signUpText = findViewById(R.id.signUpText); // ID from your XML for the "Sign Up" text
-//
-//        signUpText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Navigate to SignUpActivity
-//                Intent intent = new Intent(Pharmacy_login.this, Register.class);
-//                startActivity(intent);
-//            }
-//        });
 
+        // Set up the "Register Now" TextView to navigate to the Register activity
+        signUpText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Pharmacy_login.this, pharmacy_register.class);
+                startActivity(intent);
+            }
+        });
     }
 }

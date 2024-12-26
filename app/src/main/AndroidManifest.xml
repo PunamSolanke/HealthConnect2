@@ -21,7 +21,7 @@
 
         <!-- New Pharmacy Activities -->
         <activity
-            android:name=".Pharmacy_register"
+            android:name=".pharmacy_register"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
